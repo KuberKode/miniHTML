@@ -19,6 +19,13 @@ const server = http.createServer((request, response) => {
 	var h1 = doc.body.addChild("h1");
 	h1.setText("Hello World");
 	
+	var p = doc.body.addChild("p");
+	
+	var a = p.addChild("a");
+	
+	a.addAttribute("href","http://localhost:80");
+	a.setText("Click me!");
+	
 	response.writeHead(200, {"Content-Type": "text/html"});	
 	response.write(doc.toString());
 	response.end();
