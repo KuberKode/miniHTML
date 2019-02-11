@@ -1,4 +1,4 @@
 # miniHTML
 A mini HTML node and document class for nodejs
 
-Tested with nodejs 8.10.0
+Tested with nodejs v10.15.1 LTS

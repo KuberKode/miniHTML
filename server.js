@@ -2,7 +2,7 @@
 **
 ** The author disclaims copyright to this source code.
 **
-** Tested with nodejs v8.9.1, 8.9.4, 8.10.0
+** Tested with nodejs v10.15.1 LTS
 **
 */
 const http = require('http');
