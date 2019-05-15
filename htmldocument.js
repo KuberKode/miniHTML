@@ -18,11 +18,18 @@ function HTMLDocument(options){
 	
 	if(typeof options != 'undefined'){
 		_S.options = options;
+		if(typeof options.debug != 'undefined'){
+			_S.debug = options.debug;
+		}
 	}
 	
-	if(_S.options == null){
-		console.log("No HTMLDocument Options Specified");
+	if(_S.options == null && _S.debug){
+		console.log("[debug] No HTMLDocument Options Specified");
 	}
+	
+	_S.rootElement.debug = _S.debug;
+	
+	console.log("Debug = " + _S.rootElement.debug);
 	
 	_S.head = _S.rootElement.addChild("head");	
 	_S.body = _S.rootElement.addChild("body");
@@ -30,6 +37,10 @@ function HTMLDocument(options){
 	_S.toString = function(){
 		var out = '<!DOCTYPE "html">';
 		out += _S.rootElement.toString();
+		
+		if(_S.debug){
+			console.log("[Debug] " + out);
+		}
 		return out;
 	}
 	

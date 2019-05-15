@@ -12,6 +12,8 @@ function HTMLAttribute(options){
 	_N.attrName = "";
 	_N.attrValue = "";
 	
+	_N.debug = false;
+	
 	if(typeof options != 'undefined'){
 		_N.options = options;
 		
@@ -21,10 +23,13 @@ function HTMLAttribute(options){
 		if(typeof options.value != 'undefined'){
 			_N.attrValue = options.value;
 		}
+		if(typeof options.debug != 'undefined'){
+			_N.debug = options.debug;
+		}
 	}
 	
-	if(_N.options == null){
-		console.log("No Attribute Options Specified");
+	if(_N.options == null && _D.debug){
+		console.log("[debug] No Attribute Options Specified");
 	}
 	
 	_N.setName = function(name){
@@ -41,7 +46,6 @@ function HTMLAttribute(options){
 		if(_N.attrValue.length > 0){
 			out += '="' + _N.attrValue + '"';
 		}
-		
 		return out;
 	}
 	

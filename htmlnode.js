@@ -5,6 +5,7 @@
 */
 
 var HTMLAttribute = require('./htmlattribute');
+var HTMLStyle = require('./htmlstyle');
 
 function HTMLNode(options){
 	var _N = this;
@@ -15,6 +16,9 @@ function HTMLNode(options){
 	
 	_N.nodeName = "";
 	_N.nodeText = "";
+	_N.nodeStyle = new HTMLStyle(); //inline style
+	
+	_N.debug = false;
 	
 	if(typeof options != 'undefined'){
 		_N.options = options;
@@ -25,10 +29,13 @@ function HTMLNode(options){
 		if(typeof options.text != 'undefined'){
 			_N.nodeText = options.text;
 		}
+		if(typeof options.debug != 'undefined'){
+			_N.debug = options.debug;
+		}
 	}
 	
-	if(_N.options == null){
-		console.log("No Node Options Specified");
+	if(_N.options == null && _D.debug){
+		console.log("[debug] No Node Options Specified");
 	}
 	
 	_N.setName = function(name){
@@ -41,7 +48,7 @@ function HTMLNode(options){
 	
 	_N.addChild = function(name){
 		var count = _N.children.length;
-		var n = new HTMLNode({'name':name});
+		var n = new HTMLNode({'name':name,'debug':_N.debug});
 		
 		_N.children.push(n);
 		
@@ -68,6 +75,11 @@ function HTMLNode(options){
 				out += " " + _N.attributes[i].toString();
 			}
 		}
+		//check for style
+		var style = _N.nodeStyle.toString(true);
+		if(style.length > 0){
+			out += ' style="' + style + '"';
+		}
 		out += ">";
 		out += _N.nodeText;
 		
@@ -77,7 +89,6 @@ function HTMLNode(options){
 			out += _N.children[i].toString();
 		}
 		out += "</" + _N.nodeName + ">";
-		
 		return out;
 	}
 	
