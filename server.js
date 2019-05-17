@@ -14,7 +14,7 @@ var listenPort = 8080;
 
 const server = http.createServer((request, response) => {
 	
-	var doc = new HTMLDocument({'debug':true});
+	var doc = new HTMLDocument({'debug':false});
 	
 	var title = doc.head.addChild("title");
 	title.setText("Server");
@@ -28,7 +28,20 @@ const server = http.createServer((request, response) => {
 	bodyRules.addDeclaration("font-family","Arial");
 	bodyRules.addDeclaration("padding","0");
 	
-	style.setText(bodyStyle.toString());
+	var aStyle = new HTMLStyle({"a":{
+		"display":"block",
+		"border-radius":"6px",
+		"color":"#FFFFFF",
+		"background-color":"#000000",
+		"text-decoration":"none",
+		"padding":"6px",
+		"width":"33%",
+		"font-size":"130%",
+		"font-weight":"bold",
+		"text-align":"center"
+		}});
+	
+	style.setText(bodyStyle.toString()+aStyle.toString());
 	
 	var h1 = doc.body.addChild("h1");
 	h1.setText("Hello World");
