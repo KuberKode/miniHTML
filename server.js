@@ -11,7 +11,7 @@ const HTMLDocument = require('./htmldocument');
 const HTMLStyle = require('./htmlstyle');
 
 let listenPort = 8080;
-const nodeVersionTested = "v16.17.0 LTS";
+const nodeVersionTested = "v22.18.0 LTS";
 
 const server = http.createServer((request, response) => {
 	
