@@ -3,7 +3,7 @@ A mini HTML node and document class for nodejs with basic, qualified, CSS rules
 
 This software is released into the public domain
 
-`Tested with nodejs v22.18.0 LTS`
+`Tested with nodejs v24.15.0 LTS`
 
 To start, run the following command:
 
